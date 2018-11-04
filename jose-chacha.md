@@ -1,7 +1,7 @@
 %%%
 
     title = "Chacha derived AEAD algorithms in JSON Object Signing and Encryption (JOSE)"
-    abbr = "XChaCha"
+    abbr = "JoseChaCha"
     category = "info"
     docname = "draft-amringer-jose-chacha-03"
     workgroup = "(No Working Group)"
@@ -13,7 +13,6 @@
     initials="G."
     surname="Amringer"
     fullname="Guillaume Amringer"
-    organization="Carillon Information Security"
       [author.address]
       email = "gamringer@carillon.ca"
       [author.address.postal]
@@ -56,7 +55,7 @@ thumbprints for it ("JSON Web Key (JWK) Thumbprint") in [@!RFC7638].
 ## Algorithms
 
 This section defines the specifics of encrypting a JWE Content Encryption Key
-(CEK) with AEAD_CHACHA20_POLY1305 ([@!RFC8439]) and AEAD_CHACHA20_POLY1305
+(CEK) with AEAD_CHACHA20_POLY1305 ([@!RFC8439]) and AEAD_XCHACHA20_POLY1305
 ([@!I-D.arciszewski-xchacha]).
 
 Use of an Initialization Vector (IV) is REQUIRED with this algorithm.  The IV is
