@@ -50,13 +50,13 @@ and "**OPTIONAL**" in this document are to be interpreted as described in
 The JOSE key format ("JSON Web Key (JWK)") is defined by [@!RFC7517] and
 thumbprints for it ("JSON Web Key (JWK) Thumbprint") in [@!RFC7638].
 
-# Key Management
+# Key Encryption
 
 ## Algorithms
 
 This section defines the specifics of encrypting a JWE Content Encryption Key
-(CEK) with AEAD_CHACHA20_POLY1305 ([@!RFC8439]) and AEAD_XCHACHA20_POLY1305
-([@!I-D.arciszewski-xchacha]).
+(CEK) with AEAD_CHACHA20_POLY1305 [@!RFC8439] and AEAD_XCHACHA20_POLY1305
+[@!I-D.arciszewski-xchacha].
 
 Use of an Initialization Vector (IV) is REQUIRED with this algorithm.  The IV is
 represented in base64url-encoded form as the "iv" (initialization vector) Header
@@ -97,6 +97,31 @@ representation of the 128-bit Authentication Tag value resulting from the key
 encryption operation.  This Header Parameter MUST be present and MUST be
 understood and processed by implementations when these algorithms are used.
 
+# Key Agreement with Elliptic Curve Diffie-Hellman Ephemeral Static
+
+This section defines the specifics of key agreement with Elliptic Curve
+Diffie-Hellman Ephemeral Static [@!RFC6090], in combination with the Concat KDF,
+as defined in
+[Section 5.8.2.1 of NIST.800-56A](https://csrc.nist.gov/publications/detail/sp/800-56a/rev-3/final)
+for use as a symmetric key to wrap the CEK with the "C20PKW", or "XC20PKW"
+algorithms, in the Key Agreement with Key Wrapping mode.
+
+This mode is used exactly as defined in
+[Section 4.6 of RFC7518](https://tools.ietf.org/html/rfc7518#section-4.6),
+except that the combined key wrapping algorithms are the ones indicated in this
+document. All headers pertaining to both the ECDH-ES and key wrapping components
+("iv",' "tag", "epk", "apu", "apv") have the same meaning and requirement as in
+their original definitions.
+
+The following "alg" (algorithm) Header Parameter values are used to indicate
+that the JWE Encrypted Key is the result of encrypting the CEK using the
+corresponding algorithm:
+
+| "alg" value | Key Management Algorithm |
+| ----------- | ------------------------ |
+| ECDH-ES+C20PKW | ECDH-ES using Concat KDF and CEK wrapped with C20PKW |
+| ECDH-ES+XC20PKW | ECDH-ES using Concat KDF and CEK wrapped with XC20PKW |
+
 # Content Encryption
 
 ## Algorithms
@@ -124,36 +149,36 @@ IV size:
 The following is added to the "JSON Web Signature and Encryption Algorithms"
 registry:
 
-o Algorithm Name: "C20PKW"  
-o Algorithm Description:  Key wrapping with ChaCha20-Poly1305  
-o Algorithm Usage Location(s): "alg"  
-o JOSE Implementation Requirements: Recommended  
-o Change Controller: IESG  
-o Specification Document(s): Section 2 of [RFC-THIS]  
-o Algorithm Analysis Documents(s): [@!RFC8439]  
+o Algorithm Name: "C20PKW"
+o Algorithm Description:  Key wrapping with ChaCha20-Poly1305
+o Algorithm Usage Location(s): "alg"
+o JOSE Implementation Requirements: Recommended
+o Change Controller: IESG
+o Specification Document(s): Section 2 of [RFC-THIS]
+o Algorithm Analysis Documents(s): [@!RFC8439]
 
-o Algorithm Name: "XC20PKW"  
-o Algorithm Description:  Key wrapping with XChaCha20-Poly1305  
-o Algorithm Usage Location(s): "alg"  
-o JOSE Implementation Requirements: Recommended  
-o Change Controller: IESG  
-o Specification Document(s): Section 2 of [RFC-THIS]  
-o Algorithm Analysis Documents(s): [@?I-D.arciszewski-xchacha]  
+o Algorithm Name: "XC20PKW"
+o Algorithm Description:  Key wrapping with XChaCha20-Poly1305
+o Algorithm Usage Location(s): "alg"
+o JOSE Implementation Requirements: Recommended
+o Change Controller: IESG
+o Specification Document(s): Section 2 of [RFC-THIS]
+o Algorithm Analysis Documents(s): [@?I-D.arciszewski-xchacha]
 
-o Algorithm Name: "C20P"  
-o Algorithm Description:  ChaCha20-Poly1305  
-o Algorithm Usage Location(s): "enc"  
-o JOSE Implementation Requirements: Recommended  
-o Change Controller: IESG  
-o Specification Document(s): Section 3 of [RFC-THIS]  
-o Algorithm Analysis Documents(s): [@!RFC8439]  
+o Algorithm Name: "C20P"
+o Algorithm Description:  ChaCha20-Poly1305
+o Algorithm Usage Location(s): "enc"
+o JOSE Implementation Requirements: Recommended
+o Change Controller: IESG
+o Specification Document(s): Section 3 of [RFC-THIS]
+o Algorithm Analysis Documents(s): [@!RFC8439]
 
-o Algorithm Name: "XC20P"  
-o Algorithm Description:  ChaCha20-Poly1305  
-o Algorithm Usage Location(s): "enc"  
-o JOSE Implementation Requirements: Recommended  
-o Change Controller: IESG  
-o Specification Document(s): Section 3 of [RFC-THIS]  
-o Algorithm Analysis Documents(s): [@?I-D.arciszewski-xchacha]  
+o Algorithm Name: "XC20P"
+o Algorithm Description:  ChaCha20-Poly1305
+o Algorithm Usage Location(s): "enc"
+o JOSE Implementation Requirements: Recommended
+o Change Controller: IESG
+o Specification Document(s): Section 3 of [RFC-THIS]
+o Algorithm Analysis Documents(s): [@?I-D.arciszewski-xchacha]
 
 {backmatter}
