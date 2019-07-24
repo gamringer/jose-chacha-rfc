@@ -7,7 +7,7 @@
     workgroup = "(No Working Group)"
     keyword = ["encryption", "AEAD", "cryptography", "security", "authenticated encryption", "jose"]
 
-    date = 2018-10-16T03:20:00Z
+    date = 2019-07-23T23:51:00Z
 
     [[author]]
     initials="G."
