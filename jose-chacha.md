@@ -152,7 +152,7 @@ registry:
 o Algorithm Name: "C20PKW"
 o Algorithm Description:  Key wrapping with ChaCha20-Poly1305
 o Algorithm Usage Location(s): "alg"
-o JOSE Implementation Requirements: Recommended
+o JOSE Implementation Requirements: Optional
 o Change Controller: IESG
 o Specification Document(s): Section 2 of [RFC-THIS]
 o Algorithm Analysis Documents(s): [@!RFC8439]
@@ -160,15 +160,31 @@ o Algorithm Analysis Documents(s): [@!RFC8439]
 o Algorithm Name: "XC20PKW"
 o Algorithm Description:  Key wrapping with XChaCha20-Poly1305
 o Algorithm Usage Location(s): "alg"
-o JOSE Implementation Requirements: Recommended
+o JOSE Implementation Requirements: Optional
 o Change Controller: IESG
 o Specification Document(s): Section 2 of [RFC-THIS]
 o Algorithm Analysis Documents(s): [@?I-D.irtf-cfrg-xchacha]
 
+o Algorithm Name: "ECDH-ES+C20PKW"
+o Algorithm Description: ECDH-ES using Concat KDF and "C20PKW" wrapping
+o Algorithm Usage Location(s): "alg"
+o JOSE Implementation Requirements: Optional
+o Change Controller: IESG
+o Specification Document(s): Section 2 of [RFC-THIS]
+o Algorithm Analysis Documents(s): n/a
+
+o Algorithm Name: "ECDH-ES+XC20PKW"
+o Algorithm Description: ECDH-ES using Concat KDF and "XC20PKW" wrapping
+o Algorithm Usage Location(s): "alg"
+o JOSE Implementation Requirements: Optional
+o Change Controller: IESG
+o Specification Document(s): Section 2 of [RFC-THIS]
+o Algorithm Analysis Documents(s): n/a
+
 o Algorithm Name: "C20P"
 o Algorithm Description:  ChaCha20-Poly1305
 o Algorithm Usage Location(s): "enc"
-o JOSE Implementation Requirements: Recommended
+o JOSE Implementation Requirements: Optional
 o Change Controller: IESG
 o Specification Document(s): Section 3 of [RFC-THIS]
 o Algorithm Analysis Documents(s): [@!RFC8439]
@@ -176,7 +192,7 @@ o Algorithm Analysis Documents(s): [@!RFC8439]
 o Algorithm Name: "XC20P"
 o Algorithm Description:  ChaCha20-Poly1305
 o Algorithm Usage Location(s): "enc"
-o JOSE Implementation Requirements: Recommended
+o JOSE Implementation Requirements: Optional
 o Change Controller: IESG
 o Specification Document(s): Section 3 of [RFC-THIS]
 o Algorithm Analysis Documents(s): [@?I-D.irtf-cfrg-xchacha]
