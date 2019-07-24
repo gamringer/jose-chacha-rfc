@@ -24,7 +24,7 @@
 
 This document defines how to use the AEAD algorithms "AEAD_XCHACHA20_POLY1305"
 and "AEAD_CHACHA20_POLY1305" from [@?RFC8439] and
-[@?I-D.arciszewski-xchacha] in JSON Object Signing and Encryption (JOSE).
+[@?I-D.irtf-cfrg-xchacha] in JSON Object Signing and Encryption (JOSE).
 
 {mainmatter}
 
@@ -34,7 +34,7 @@ The Internet Research Task Force (IRTF) Crypto Forum Research Group
 (CFRG) defined the ChaCha20 and Poly1305 algorithms to be used in IETF protocols
 both independantly and as an AEAD construction ([@!RFC8439]).  It has also been
 presented with a definition of an eXtended-nonce variant
-([@!I-D.arciszewski-xchacha]) for use in stateless contexts.  This document
+([@!I-D.irtf-cfrg-xchacha]) for use in stateless contexts.  This document
 defines how to use those algorithms in JOSE in an interoperable manner.
 
 This document defines the conventions to use in the context of
@@ -56,7 +56,7 @@ thumbprints for it ("JSON Web Key (JWK) Thumbprint") in [@!RFC7638].
 
 This section defines the specifics of encrypting a JWE Content Encryption Key
 (CEK) with AEAD_CHACHA20_POLY1305 [@!RFC8439] and AEAD_XCHACHA20_POLY1305
-[@!I-D.arciszewski-xchacha].
+[@!I-D.irtf-cfrg-xchacha].
 
 Use of an Initialization Vector (IV) is REQUIRED with this algorithm.  The IV is
 represented in base64url-encoded form as the "iv" (initialization vector) Header
@@ -163,7 +163,7 @@ o Algorithm Usage Location(s): "alg"
 o JOSE Implementation Requirements: Recommended
 o Change Controller: IESG
 o Specification Document(s): Section 2 of [RFC-THIS]
-o Algorithm Analysis Documents(s): [@?I-D.arciszewski-xchacha]
+o Algorithm Analysis Documents(s): [@?I-D.irtf-cfrg-xchacha]
 
 o Algorithm Name: "C20P"
 o Algorithm Description:  ChaCha20-Poly1305
@@ -179,6 +179,6 @@ o Algorithm Usage Location(s): "enc"
 o JOSE Implementation Requirements: Recommended
 o Change Controller: IESG
 o Specification Document(s): Section 3 of [RFC-THIS]
-o Algorithm Analysis Documents(s): [@?I-D.arciszewski-xchacha]
+o Algorithm Analysis Documents(s): [@?I-D.irtf-cfrg-xchacha]
 
 {backmatter}
