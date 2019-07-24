@@ -14,7 +14,7 @@
     surname="Amringer"
     fullname="Guillaume Amringer"
       [author.address]
-      email = "gamringer@carillon.ca"
+      email = "g.amringer@gmail.com"
       [author.address.postal]
       country = "Canada"
 
