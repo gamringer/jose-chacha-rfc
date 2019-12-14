@@ -198,3 +198,77 @@ o Specification Document(s): Section 4 of [RFC-THIS]
 o Algorithm Analysis Documents(s): [@?I-D.irtf-cfrg-xchacha]  
 
 {backmatter}
+
+# Example using XC20PKW
+
+**Considering the payload of "Hello World!", which encodes to base64url as:**
+```
+SGVsbG8gV29ybGQh
+```
+
+**We begin by generating the XChacha20-Poly1309 content encryption key:**
+```
+la2knCeFPAvUE2IVPm-RNrwj4UrHffLU6Y1tx3d5T1Q
+```
+
+**We follow by encrypting the CEK using XChacha20-Poly1309 itself. We generate a new key and a nonce:**
+
+KEK:
+```
+Rpv7sxPJYeNjKr-L8gPrKtQLHX-1dDuqtJuriVQ0eUY
+```
+Nonce:
+```
+LuNNS5RAagkOQVewQOLRp9noXET_YsPX
+```
+
+**Using those parameters, we end up with the following output from XChacha20-Poly1309:**
+
+Ciphertext:
+```
+K-kXEFjmSsjKzU91
+```
+Tag:
+```
+VT2Z9a93JFe2om2gboUz4g
+```
+
+**We then construct the following JWE header:**
+```
+{"alg":"XC20PKW","enc":"XC20P","iv":"LuNNS5RAagkOQVewQOLRp9noXET_YsPX","tag":"VT2Z9a93
+JFe2om2gboUz4g"}
+```
+
+**The next step is to prepare the content encryption:**
+
+AAD:
+```
+eyJhbGciOiJYQzIwUEtXIiwiZW5jIjoiWEMyMFAiLCJpdiI6Ikx1Tk5TNVJBYWdrT1FWZXdRT0xScDlub1hFVF
+9Zc1BYIiwidGFnIjoiVlQyWjlhOTNKRmUyb20yZ2JvVXo0ZyJ9
+```
+Key (generated earlier):
+```
+la2knCeFPAvUE2IVPm-RNrwj4UrHffLU6Y1tx3d5T1Q
+```
+Nonce:
+```
+LHs6vru3ggyuAzgT2UJkWyqJuZSv0Gae
+```
+
+**We then encrypt the payload with XChacha20-Poly1309 using the previous parameters, which results in the following output:**
+
+Ciphertext:
+```
+QgxRd4qQrkQNaEK3
+```
+Tag:
+```
+aQDs_RkdWabvzmxYEnoShg
+```
+
+**Lastly, we combine all the previous outputs to form the following JWE:**
+```
+eyJhbGciOiJYQzIwUEtXIiwiZW5jIjoiWEMyMFAiLCJpdiI6Ikx1Tk5TNVJBYWdrT1FWZXdRT0xScDlub1hFVF
+9Zc1BYIiwidGFnIjoiVlQyWjlhOTNKRmUyb20yZ2JvVXo0ZyJ9.K-kXEFjmSsjKzU91.LHs6vru3ggyuAzgT2U
+JkWyqJuZSv0Gae.QgxRd4qQrkQNaEK3.aQDs_RkdWabvzmxYEnoShg
+```
