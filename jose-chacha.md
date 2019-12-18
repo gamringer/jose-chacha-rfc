@@ -201,34 +201,34 @@ o Algorithm Analysis Documents(s): [@?I-D.irtf-cfrg-xchacha]
 
 # Example using XC20PKW
 
-**Considering the payload of "Hello World!", which encodes to base64url as:**
+**Considering the payload of "Hello World!" (Base64URL):**
 ```
 SGVsbG8gV29ybGQh
 ```
 
-**We begin by generating the XChacha20-Poly1309 content encryption key:**
+**We begin by generating the XChacha20-Poly1309 content encryption key (Base64URL):**
 ```
 la2knCeFPAvUE2IVPm-RNrwj4UrHffLU6Y1tx3d5T1Q
 ```
 
 **We follow by encrypting the CEK using XChacha20-Poly1309 itself. We generate a new key and a nonce:**
 
-KEK:
+KEK (Base64URL)
 ```
 Rpv7sxPJYeNjKr-L8gPrKtQLHX-1dDuqtJuriVQ0eUY
 ```
-Nonce:
+Nonce (Base64URL)
 ```
 LuNNS5RAagkOQVewQOLRp9noXET_YsPX
 ```
 
 **Using those parameters, we end up with the following output from XChacha20-Poly1309:**
 
-Ciphertext:
+Ciphertext (Base64URL)
 ```
 K-kXEFjmSsjKzU91
 ```
-Tag:
+Tag (Base64URL)
 ```
 VT2Z9a93JFe2om2gboUz4g
 ```
@@ -241,7 +241,7 @@ JFe2om2gboUz4g"}
 
 **The next step is to prepare the content encryption:**
 
-AAD:
+AAD (Base64URL)
 ```
 eyJhbGciOiJYQzIwUEtXIiwiZW5jIjoiWEMyMFAiLCJpdiI6Ikx1Tk5TNVJBYWdrT1FWZXdRT0xScDlub1hFVF
 9Zc1BYIiwidGFnIjoiVlQyWjlhOTNKRmUyb20yZ2JvVXo0ZyJ9
@@ -250,18 +250,18 @@ Key (generated earlier):
 ```
 la2knCeFPAvUE2IVPm-RNrwj4UrHffLU6Y1tx3d5T1Q
 ```
-Nonce:
+Nonce (Base64URL)
 ```
 LHs6vru3ggyuAzgT2UJkWyqJuZSv0Gae
 ```
 
 **We then encrypt the payload with XChacha20-Poly1309 using the previous parameters, which results in the following output:**
 
-Ciphertext:
+Ciphertext (Base64URL)
 ```
 QgxRd4qQrkQNaEK3
 ```
-Tag:
+Tag (Base64URL)
 ```
 aQDs_RkdWabvzmxYEnoShg
 ```
@@ -271,4 +271,116 @@ aQDs_RkdWabvzmxYEnoShg
 eyJhbGciOiJYQzIwUEtXIiwiZW5jIjoiWEMyMFAiLCJpdiI6Ikx1Tk5TNVJBYWdrT1FWZXdRT0xScDlub1hFVF
 9Zc1BYIiwidGFnIjoiVlQyWjlhOTNKRmUyb20yZ2JvVXo0ZyJ9.K-kXEFjmSsjKzU91.LHs6vru3ggyuAzgT2U
 JkWyqJuZSv0Gae.QgxRd4qQrkQNaEK3.aQDs_RkdWabvzmxYEnoShg
+```
+
+# Example using ECDH-ES+XC20PKW
+
+**Considering the payload of "Hello World!" (Base64URL):**
+```
+SGVsbG8gV29ybGQh
+```
+
+**We begin by generating the XChacha20-Poly1309 content encryption key (Base64URL):**
+```
+O2-TuP5Qz_ab6N61LhVS6asFdN_X5zF0YhJ6Df0vtoE
+```
+
+**We follow by encrypting the CEK using XChacha20-Poly1309 itself following a key agreement. We generate a new key pair:**
+
+Private X (Base64URL)
+```
+OtbkdOjp6SIgQ-TMXlqg48Ds8ycsSCxadJrjCurCcSM
+```
+
+Public X (Base64URL)
+```
+xxXXpDLvS0z-Zlx5J6dsVPPVonYufe9zTKfat0dEryM
+```
+
+**Using the recipient public key, we generate a shared secret**
+
+Recipient PK (Base64URL)
+```
+8llBJmFOkoFO8TYhFyDFm90Z8c6ytiD18wUgM5alCHY
+```
+
+Shared Secret (Base64URL)
+```
+llX-1dAQU6BiuTDUq4DgRy9Ob-1zoLp-1hvmKa8baGk
+```
+
+**We can now derive a KEK:**
+
+APU (Base64URL)
+```
+Q2tkNDNqSkZNb2FHeGVJZW9FUHgtNF9SYlNmLWd1T19MRHpvbDhrLWFnM2NELXhmdzdWX1IzM0lXVHRDZ0NqVm
+hmWTVQa29aT3AyTGwxZTR5ZWZ4d2c
+```
+
+KEK (Base64URL)
+```
+jPC4ybPvJ-FF4qz7hYiHDxr7XGQdQCMDjWaQ-y_MJfQ
+```
+
+**We can now perform XChacha20-Poly1309 on the CEK using a new random nonce:**
+Nonce (Base64URL)
+```
+1Ef_Hs3NdFIujh9-uZEYLz4N_b1K1CJl
+```
+
+Ciphertext (Base64URL)
+```
+mzHMc5XlqW-jkGP4
+```
+Tag (Base64URL)
+```
+G8A4JnNmsG2wgvQh6Q5A8g
+```
+
+**We then construct the following JWE header:**
+```
+{"alg":"ECDH-ES+XC20PKW","enc":"XC20P","iv":"1Ef_Hs3NdFIujh9-uZEYLz4N_b1K1CJl","tag":"
+G8A4JnNmsG2wgvQh6Q5A8g","apu":"Q2tkNDNqSkZNb2FHeGVJZW9FUHgtNF9SYlNmLWd1T19MRHpvbDhrLWF
+nM2NELXhmdzdWX1IzM0lXVHRDZ0NqVmhmWTVQa29aT3AyTGwxZTR5ZWZ4d2c","epk":{"typ":"OKP","crv"
+:"X25519","x":"xxXXpDLvS0z-Zlx5J6dsVPPVonYufe9zTKfat0dEryM"}}
+```
+
+**The next step is to prepare the content encryption:**
+
+AAD (Base64URL)
+```
+eyJhbGciOiJFQ0RILUVTK1hDMjBQS1ciLCJlbmMiOiJYQzIwUCIsIml2IjoiMUVmX0hzM05kRkl1amg5LXVaRV
+lMejROX2IxSzFDSmwiLCJ0YWciOiJHOEE0Sm5ObXNHMndndlFoNlE1QThnIiwiYXB1IjoiUTJ0a05ETnFTa1pO
+YjJGSGVHVkpaVzlGVUhndE5GOVNZbE5tTFdkMVQxOU1SSHB2YkRockxXRm5NMk5FTFhobWR6ZFdYMUl6TTBsWF
+ZIUkRaME5xVm1obVdUVlFhMjlhVDNBeVRHd3haVFI1WldaNGQyYyIsImVwayI6eyJ0eXAiOiJPS1AiLCJjcnYi
+OiJYMjU1MTkiLCJ4IjoieHhYWHBETHZTMHotWmx4NUo2ZHNWUFBWb25ZdWZlOXpUS2ZhdDBkRXJ5TSJ9fQ
+```
+Key (generated earlier):
+```
+O2-TuP5Qz_ab6N61LhVS6asFdN_X5zF0YhJ6Df0vtoE
+```
+Nonce (Base64URL)
+```
+okZz0AJz-PfUL4OGjioPLsg6-siwyq2I
+```
+
+**We then encrypt the payload with XChacha20-Poly1309 using the previous parameters, which results in the following output:**
+
+Ciphertext (Base64URL)
+```
+yxpuuXB7DcXBlyVE
+```
+Tag (Base64URL)
+```
+IwvDEC8hxltfzidjmUKeMg
+```
+
+**Lastly, we combine all the previous outputs to form the following JWE:**
+```
+eyJhbGciOiJFQ0RILUVTK1hDMjBQS1ciLCJlbmMiOiJYQzIwUCIsIml2IjoiMUVmX0hzM05kRkl1amg5LXVaRV
+lMejROX2IxSzFDSmwiLCJ0YWciOiJHOEE0Sm5ObXNHMndndlFoNlE1QThnIiwiYXB1IjoiUTJ0a05ETnFTa1pO
+YjJGSGVHVkpaVzlGVUhndE5GOVNZbE5tTFdkMVQxOU1SSHB2YkRockxXRm5NMk5FTFhobWR6ZFdYMUl6TTBsWF
+ZIUkRaME5xVm1obVdUVlFhMjlhVDNBeVRHd3haVFI1WldaNGQyYyIsImVwayI6eyJ0eXAiOiJPS1AiLCJjcnYi
+OiJYMjU1MTkiLCJ4IjoieHhYWHBETHZTMHotWmx4NUo2ZHNWUFBWb25ZdWZlOXpUS2ZhdDBkRXJ5TSJ9fQ.mzH
+Mc5XlqW-jkGP4.okZz0AJz-PfUL4OGjioPLsg6-siwyq2I.yxpuuXB7DcXBlyVE.IwvDEC8hxltfzidjmUKeMg
 ```
