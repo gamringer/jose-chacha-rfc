@@ -235,16 +235,17 @@ VT2Z9a93JFe2om2gboUz4g
 
 **We then construct the following JWE header:**
 ```
-{"alg":"XC20PKW","enc":"XC20P","iv":"LuNNS5RAagkOQVewQOLRp9noXET_YsPX","tag":"VT2Z9a93
-JFe2om2gboUz4g"}
+{"alg":"XC20PKW","enc":"XC20P","iv":"LuNNS5RAagkOQVewQOLRp9noXET
+_YsPX","tag":"VT2Z9a93JFe2om2gboUz4g"}
 ```
 
 **The next step is to prepare the content encryption:**
 
 AAD (Base64URL)
 ```
-eyJhbGciOiJYQzIwUEtXIiwiZW5jIjoiWEMyMFAiLCJpdiI6Ikx1Tk5TNVJBYWdrT1FWZXdRT0xScDlub1hFVF
-9Zc1BYIiwidGFnIjoiVlQyWjlhOTNKRmUyb20yZ2JvVXo0ZyJ9
+eyJhbGciOiJYQzIwUEtXIiwiZW5jIjoiWEMyMFAiLCJpdiI6Ikx1Tk5TNVJBYWdr
+T1FWZXdRT0xScDlub1hFVF9Zc1BYIiwidGFnIjoiVlQyWjlhOTNKRmUyb20yZ2Jv
+VXo0ZyJ9
 ```
 Key (generated earlier):
 ```
@@ -268,9 +269,10 @@ aQDs_RkdWabvzmxYEnoShg
 
 **Lastly, we combine all the previous outputs to form the following JWE:**
 ```
-eyJhbGciOiJYQzIwUEtXIiwiZW5jIjoiWEMyMFAiLCJpdiI6Ikx1Tk5TNVJBYWdrT1FWZXdRT0xScDlub1hFVF
-9Zc1BYIiwidGFnIjoiVlQyWjlhOTNKRmUyb20yZ2JvVXo0ZyJ9.K-kXEFjmSsjKzU91.LHs6vru3ggyuAzgT2U
-JkWyqJuZSv0Gae.QgxRd4qQrkQNaEK3.aQDs_RkdWabvzmxYEnoShg
+eyJhbGciOiJYQzIwUEtXIiwiZW5jIjoiWEMyMFAiLCJpdiI6Ikx1Tk5TNVJBYWdr
+T1FWZXdRT0xScDlub1hFVF9Zc1BYIiwidGFnIjoiVlQyWjlhOTNKRmUyb20yZ2Jv
+VXo0ZyJ9.K-kXEFjmSsjKzU91.LHs6vru3ggyuAzgT2UJkWyqJuZSv0Gae.QgxRd
+4qQrkQNaEK3.aQDs_RkdWabvzmxYEnoShg
 ```
 
 # Example using ECDH-ES+XC20PKW
@@ -313,8 +315,8 @@ llX-1dAQU6BiuTDUq4DgRy9Ob-1zoLp-1hvmKa8baGk
 
 APU (Base64URL)
 ```
-Q2tkNDNqSkZNb2FHeGVJZW9FUHgtNF9SYlNmLWd1T19MRHpvbDhrLWFnM2NELXhmdzdWX1IzM0lXVHRDZ0NqVm
-hmWTVQa29aT3AyTGwxZTR5ZWZ4d2c
+Q2tkNDNqSkZNb2FHeGVJZW9FUHgtNF9SYlNmLWd1T19MRHpvbDhrLWFnM2NELXhm
+dzdWX1IzM0lXVHRDZ0NqVmhmWTVQa29aT3AyTGwxZTR5ZWZ4d2c
 ```
 
 KEK (Base64URL)
@@ -323,6 +325,7 @@ jPC4ybPvJ-FF4qz7hYiHDxr7XGQdQCMDjWaQ-y_MJfQ
 ```
 
 **We can now perform XChacha20-Poly1309 on the CEK using a new random nonce:**
+
 Nonce (Base64URL)
 ```
 1Ef_Hs3NdFIujh9-uZEYLz4N_b1K1CJl
@@ -339,21 +342,24 @@ G8A4JnNmsG2wgvQh6Q5A8g
 
 **We then construct the following JWE header:**
 ```
-{"alg":"ECDH-ES+XC20PKW","enc":"XC20P","iv":"1Ef_Hs3NdFIujh9-uZEYLz4N_b1K1CJl","tag":"
-G8A4JnNmsG2wgvQh6Q5A8g","apu":"Q2tkNDNqSkZNb2FHeGVJZW9FUHgtNF9SYlNmLWd1T19MRHpvbDhrLWF
-nM2NELXhmdzdWX1IzM0lXVHRDZ0NqVmhmWTVQa29aT3AyTGwxZTR5ZWZ4d2c","epk":{"typ":"OKP","crv"
-:"X25519","x":"xxXXpDLvS0z-Zlx5J6dsVPPVonYufe9zTKfat0dEryM"}}
+{"alg":"ECDH-ES+XC20PKW","enc":"XC20P","iv":"1Ef_Hs3NdFIujh9-uZE
+YLz4N_b1K1CJl","tag":"G8A4JnNmsG2wgvQh6Q5A8g","apu":"Q2tkNDNqSkZ
+Nb2FHeGVJZW9FUHgtNF9SYlNmLWd1T19MRHpvbDhrLWFnM2NELXhmdzdWX1IzM0l
+XVHRDZ0NqVmhmWTVQa29aT3AyTGwxZTR5ZWZ4d2c","epk":{"typ":"OKP","cr
+v":"X25519","x":"xxXXpDLvS0z-Zlx5J6dsVPPVonYufe9zTKfat0dEryM"}}
 ```
 
 **The next step is to prepare the content encryption:**
 
 AAD (Base64URL)
 ```
-eyJhbGciOiJFQ0RILUVTK1hDMjBQS1ciLCJlbmMiOiJYQzIwUCIsIml2IjoiMUVmX0hzM05kRkl1amg5LXVaRV
-lMejROX2IxSzFDSmwiLCJ0YWciOiJHOEE0Sm5ObXNHMndndlFoNlE1QThnIiwiYXB1IjoiUTJ0a05ETnFTa1pO
-YjJGSGVHVkpaVzlGVUhndE5GOVNZbE5tTFdkMVQxOU1SSHB2YkRockxXRm5NMk5FTFhobWR6ZFdYMUl6TTBsWF
-ZIUkRaME5xVm1obVdUVlFhMjlhVDNBeVRHd3haVFI1WldaNGQyYyIsImVwayI6eyJ0eXAiOiJPS1AiLCJjcnYi
-OiJYMjU1MTkiLCJ4IjoieHhYWHBETHZTMHotWmx4NUo2ZHNWUFBWb25ZdWZlOXpUS2ZhdDBkRXJ5TSJ9fQ
+eyJhbGciOiJFQ0RILUVTK1hDMjBQS1ciLCJlbmMiOiJYQzIwUCIsIml2IjoiMUVm
+X0hzM05kRkl1amg5LXVaRVlMejROX2IxSzFDSmwiLCJ0YWciOiJHOEE0Sm5ObXNH
+MndndlFoNlE1QThnIiwiYXB1IjoiUTJ0a05ETnFTa1pOYjJGSGVHVkpaVzlGVUhn
+dE5GOVNZbE5tTFdkMVQxOU1SSHB2YkRockxXRm5NMk5FTFhobWR6ZFdYMUl6TTBs
+WFZIUkRaME5xVm1obVdUVlFhMjlhVDNBeVRHd3haVFI1WldaNGQyYyIsImVwayI6
+eyJ0eXAiOiJPS1AiLCJjcnYiOiJYMjU1MTkiLCJ4IjoieHhYWHBETHZTMHotWmx4
+NUo2ZHNWUFBWb25ZdWZlOXpUS2ZhdDBkRXJ5TSJ9fQ
 ```
 Key (generated earlier):
 ```
@@ -377,10 +383,13 @@ IwvDEC8hxltfzidjmUKeMg
 
 **Lastly, we combine all the previous outputs to form the following JWE:**
 ```
-eyJhbGciOiJFQ0RILUVTK1hDMjBQS1ciLCJlbmMiOiJYQzIwUCIsIml2IjoiMUVmX0hzM05kRkl1amg5LXVaRV
-lMejROX2IxSzFDSmwiLCJ0YWciOiJHOEE0Sm5ObXNHMndndlFoNlE1QThnIiwiYXB1IjoiUTJ0a05ETnFTa1pO
-YjJGSGVHVkpaVzlGVUhndE5GOVNZbE5tTFdkMVQxOU1SSHB2YkRockxXRm5NMk5FTFhobWR6ZFdYMUl6TTBsWF
-ZIUkRaME5xVm1obVdUVlFhMjlhVDNBeVRHd3haVFI1WldaNGQyYyIsImVwayI6eyJ0eXAiOiJPS1AiLCJjcnYi
-OiJYMjU1MTkiLCJ4IjoieHhYWHBETHZTMHotWmx4NUo2ZHNWUFBWb25ZdWZlOXpUS2ZhdDBkRXJ5TSJ9fQ.mzH
-Mc5XlqW-jkGP4.okZz0AJz-PfUL4OGjioPLsg6-siwyq2I.yxpuuXB7DcXBlyVE.IwvDEC8hxltfzidjmUKeMg
+eyJhbGciOiJFQ0RILUVTK1hDMjBQS1ciLCJlbmMiOiJYQzIwUCIsIml2IjoiMUVm
+X0hzM05kRkl1amg5LXVaRVlMejROX2IxSzFDSmwiLCJ0YWciOiJHOEE0Sm5ObXNH
+MndndlFoNlE1QThnIiwiYXB1IjoiUTJ0a05ETnFTa1pOYjJGSGVHVkpaVzlGVUhn
+dE5GOVNZbE5tTFdkMVQxOU1SSHB2YkRockxXRm5NMk5FTFhobWR6ZFdYMUl6TTBs
+WFZIUkRaME5xVm1obVdUVlFhMjlhVDNBeVRHd3haVFI1WldaNGQyYyIsImVwayI6
+eyJ0eXAiOiJPS1AiLCJjcnYiOiJYMjU1MTkiLCJ4IjoieHhYWHBETHZTMHotWmx4
+NUo2ZHNWUFBWb25ZdWZlOXpUS2ZhdDBkRXJ5TSJ9fQ.mzHMc5XlqW-jkGP4.okZz
+0AJz-PfUL4OGjioPLsg6-siwyq2I.yxpuuXB7DcXBlyVE.IwvDEC8hxltfzidjmU
+KeMg
 ```
