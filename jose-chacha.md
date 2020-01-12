@@ -3,11 +3,11 @@
     title = "Chacha derived AEAD algorithms in JSON Object Signing and Encryption (JOSE)"
     abbr = "JoseChaCha"
     category = "info"
-    docname = "draft-amringer-jose-chacha-01"
+    docname = "draft-amringer-jose-chacha-02"
     workgroup = "(No Working Group)"
     keyword = ["encryption", "AEAD", "cryptography", "security", "authenticated encryption", "jose"]
 
-    date = 2019-07-23T23:51:00Z
+    date = 2020-01-09T21:00:00-05:00
 
     [[author]]
     initials="G."
